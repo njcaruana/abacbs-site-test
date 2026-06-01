@@ -1,9 +1,9 @@
-+++
-title = "[ Name ]"
-role = "Conference Chair"
-institution = "[ Institution ]"
-location = "[ City, State ]"
-profile_url = ""
-weight = 5
-draft = false
-+++
+---
+title: Nikeisha Caruana
+role: General Member
+institution: University of Melbourne
+location: VIC
+profile_url: ""
+weight: 5
+draft: false
+---
