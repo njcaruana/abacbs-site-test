@@ -1,0 +1,111 @@
+{{ define "main" }}
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <span class="hero-eyebrow">Peak Body for Bioinformatics in Australia</span>
+    <h1>Australian Bioinformatics And Computational Biology Society</h1>
+    <p>The national scientific and professional society for bioinformatics and computational biology researchers, practitioners, and educators across Australia.</p>
+    <div class="hero-actions">
+      <a href="{{ site.Params.slack }}" class="btn btn-ghost-light" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 124 124" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0"><path d="M26.1 78.9c0 7.2-5.9 13.1-13.1 13.1S0 86.1 0 78.9s5.9-13.1 13.1-13.1H26v13.1z" fill="#E01E5A"/><path d="M32.6 78.9c0-7.2 5.9-13.1 13.1-13.1s13.1 5.9 13.1 13.1v32.8c0 7.2-5.9 13.1-13.1 13.1s-13.1-5.9-13.1-13.1V78.9z" fill="#E01E5A"/><path d="M45.7 26c-7.2 0-13.1-5.9-13.1-13.1S38.5 0 45.7 0s13.1 5.9 13.1 13.1V26H45.7z" fill="#36C5F0"/><path d="M45.7 32.5c7.2 0 13.1 5.9 13.1 13.1s-5.9 13.1-13.1 13.1H13c-7.2 0-13.1-5.9-13.1-13.1S5.8 32.5 13 32.5h32.7z" fill="#36C5F0"/><path d="M97.9 45.6c0-7.2 5.9-13.1 13.1-13.1S124 38.4 124 45.6s-5.9 13.1-13.1 13.1H97.9V45.6z" fill="#2EB67D"/><path d="M91.4 45.6c0 7.2-5.9 13.1-13.1 13.1S65.2 52.8 65.2 45.6V12.9C65.2 5.7 71.1-.2 78.3-.2s13.1 5.9 13.1 13.1v32.7z" fill="#2EB67D"/><path d="M78.3 97.9c7.2 0 13.1 5.9 13.1 13.1s-5.9 13.1-13.1 13.1-13.1-5.9-13.1-13.1V97.9h13.1z" fill="#ECB22E"/><path d="M78.3 91.4c-7.2 0-13.1-5.9-13.1-13.1s5.9-13.1 13.1-13.1H111c7.2 0 13.1 5.9 13.1 13.1s-5.9 13.1-13.1 13.1H78.3z" fill="#ECB22E"/></svg>
+        Join us on Slack
+      </a>
+      <a href="#" class="btn btn-red">✉️ Subscribe to Newsletter</a>
+      <a href="/events/" class="btn btn-outline-white">Upcoming Events</a>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div style="max-width:1100px;margin:0 auto;padding:0 2rem;">
+  <div class="stat-row">
+    <div class="stat-cell"><div class="stat-num">{{ site.Params.memberCount }}</div><div class="stat-label">Members nationwide</div></div>
+    <div class="stat-cell"><div class="stat-num">12+</div><div class="stat-label">Years of ABACBS</div></div>
+    <div class="stat-cell"><div class="stat-num">50+</div><div class="stat-label">Annual events &amp; workshops</div></div>
+  </div>
+</div>
+
+<!-- ABOUT INTRO -->
+<div class="section">
+  <div class="feature-row">
+    <div>
+      <div class="section-label">About ABACBS</div>
+      <h2 class="section-title">The peak body for bioinformatics in Australia</h2>
+      <p style="color:var(--muted);font-size:.97rem;line-height:1.75;margin-bottom:1rem;">ABACBS is the national scientific and professional society for bioinformatics and computational biology. We represent researchers, practitioners, and educators at all career stages — from EMCRs to senior faculty and industry professionals.</p>
+      <p style="color:var(--muted);font-size:.97rem;line-height:1.75;margin-bottom:1.5rem;">We advocate for the field, run the annual national conference, support professional development, and connect our community across Australia and internationally.</p>
+      <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
+        <a href="#" class="btn btn-red">Become a Member</a>
+        <a href="/about/" class="btn btn-outline">About Us</a>
+      </div>
+    </div>
+    <div class="feature-photo">
+      <img src="/img/conference-2025.webp" alt="ABACBS Conference 2025 – Adelaide">
+    </div>
+  </div>
+</div>
+
+<!-- WHAT WE OFFER -->
+<div class="bg-white-section">
+  <div class="bg-white-inner">
+    <div class="section-label" style="text-align:center;">What We Offer</div>
+    <h2 class="section-title" style="text-align:center;margin:0 auto 2.5rem;">Supporting the bioinformatics community</h2>
+    <div class="grid-3">
+      <div class="card card-accent"><div class="card-icon">🎤</div><h3>Annual Conference</h3><p>The premier national event for Australian bioinformatics and computational biology, with keynotes, talks, workshops, and networking.</p><a class="card-link" href="/conference/">View conference →</a></div>
+      <div class="card card-accent"><div class="card-icon teal">🏫</div><h3>Training &amp; Events</h3><p>Workshops, seminars, webinars, and regional events covering methods, tools, and career development for practitioners at all levels.</p><a class="card-link" href="/events/">Browse events →</a></div>
+      <div class="card card-accent"><div class="card-icon sky">💼</div><h3>Jobs Board</h3><p>The dedicated board for bioinformatics and computational biology positions across academia, industry, and government in Australia.</p><a class="card-link" href="/resources/#jobs">View jobs →</a></div>
+      <div class="card card-accent"><div class="card-icon">🏆</div><h3>Awards</h3><p>Recognising excellence across career stages, including awards for professional bioinformaticians, EMCRs, and open science contributions.</p><a class="card-link" href="#">View awards →</a></div>
+      <div class="card card-accent"><div class="card-icon teal">📣</div><h3>Advocacy</h3><p>Representing the bioinformatics community to funding bodies, government, and international organisations on behalf of our members.</p><a class="card-link" href="#">Learn more →</a></div>
+      <div class="card card-accent"><div class="card-icon sky">🌐</div><h3>Community</h3><p>Connect with peers on Slack, through regional chapters, and via special interest groups spanning genomics, structural biology, and more.</p><a class="card-link" href="{{ site.Params.slack }}" target="_blank">Join Slack →</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- UPCOMING EVENTS -->
+{{ $events := where (where site.RegularPages "Section" "events") "Params.draft" "ne" true }}
+{{ $events = $events.ByDate }}
+{{ if $events }}
+<div class="section">
+  <div class="section-label">Coming Up</div>
+  <h2 class="section-title">Upcoming events</h2>
+  <div class="grid-2" style="margin-bottom:1.5rem;">
+    {{ range first 2 $events }}
+    <div class="event-card">
+      <div class="event-date-box navy">
+        <strong>{{ .Date.Format "02" }}</strong>{{ .Date.Format "Jan" }}
+      </div>
+      <div>
+        <span class="tag tag-navy">{{ .Params.type_tag }}</span>
+        <h4>{{ .Title }}</h4>
+        <p>{{ .Summary }}</p>
+        <div class="event-meta"><span>📍 {{ .Params.location }}</span><span>📅 {{ .Params.event_time }}</span></div>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+  <a href="/events/" class="btn btn-outline">View all events →</a>
+</div>
+{{ end }}
+
+<!-- NEWSLETTER CTA -->
+<div class="section-sm" style="padding-top:0;">
+  <div class="highlight-box-red">
+    <div>
+      <h3>Stay connected with ABACBS</h3>
+      <p>Subscribe to the newsletter for conference updates, job listings, community news, and funding opportunities delivered monthly.</p>
+    </div>
+    <a href="#" class="btn btn-outline-white">✉️ Subscribe to Newsletter</a>
+  </div>
+</div>
+
+<!-- SLACK BANNER -->
+<div class="banner">
+  <div style="display:flex;align-items:center;gap:.75rem;">
+    <span style="font-size:1.4rem;">💬</span>
+    <div>
+      <p>Join the ABACBS Slack workspace</p>
+      <small>Channels for jobs, methods, regional groups, and more</small>
+    </div>
+  </div>
+  <a href="{{ site.Params.slack }}" target="_blank" class="btn btn-outline-white">Join Slack</a>
+</div>
+{{ end }}

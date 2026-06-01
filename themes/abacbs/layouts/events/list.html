@@ -1,0 +1,74 @@
+{{ define "main" }}
+<div class="sub-hero">
+  <div class="sub-eyebrow">Professional Development</div>
+  <h1>Training &amp; Events</h1>
+  <p>Workshops, seminars, webinars, and regional events for bioinformatics practitioners at all career stages.</p>
+</div>
+
+<div class="section">
+  <div class="section-label">Upcoming Workshops &amp; Events</div>
+  <h2 class="section-title">Register now</h2>
+  {{ $events := where (where site.RegularPages "Section" "events") "Params.draft" "ne" true }}
+  {{ $events = $events.ByDate }}
+  {{ if $events }}
+  <div class="events-list" style="margin-bottom:2.5rem;">
+    {{ range $events }}
+    <div class="event-card">
+      <div class="event-date-box teal">
+        <strong>{{ .Date.Format "02" }}</strong>{{ .Date.Format "Jan" }}
+      </div>
+      <div style="flex:1;">
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.3rem;">
+          <span class="tag tag-teal">{{ .Params.type_tag }}</span>
+        </div>
+        <h4>{{ .Title }}</h4>
+        <p>{{ .Summary }}</p>
+        <div class="event-meta">
+          <span>📍 {{ .Params.location }}</span>
+          <span>📅 {{ .Params.event_time }}</span>
+          <span>🎟 {{ .Params.cost }}</span>
+        </div>
+      </div>
+      {{ with .Params.registration_url }}<a href="{{ . }}" class="btn btn-red" style="align-self:center;font-size:.8rem;">Register</a>{{ end }}
+    </div>
+    {{ end }}
+  </div>
+  {{ else }}
+  <p style="color:var(--muted);">No upcoming events at the moment. Check back soon.</p>
+  {{ end }}
+</div>
+
+<!-- SEMINAR SERIES -->
+<div class="bg-white-section">
+  <div class="bg-white-inner">
+    <div class="section-label">National Seminar Series</div>
+    <h2 class="section-title">Monthly online seminars</h2>
+    <p class="section-lead">The ABACBS National Seminar Series runs monthly during the academic year, featuring speakers from universities, research institutes, and industry. Open to all — no registration required.</p>
+    {{ $seminars := where (where site.RegularPages "Section" "seminars") "Params.draft" "ne" true }}
+    {{ $seminars = $seminars.ByDate }}
+    {{ if $seminars }}
+    <div class="events-list" style="margin-bottom:1.5rem;">
+      {{ range $seminars }}
+      <div class="event-card">
+        <div class="event-date-box" style="background:var(--sky);">
+          <strong>{{ .Date.Format "02" }}</strong>{{ .Date.Format "Jan" }}
+        </div>
+        <div style="flex:1;">
+          <h4>{{ .Title }}</h4>
+          {{ with .Params.speaker }}<p style="font-size:.85rem;font-weight:600;color:var(--ink);margin-bottom:.2rem;">{{ . }}{{ with $.Params.speaker_institution }}, {{ . }}{{ end }}</p>{{ end }}
+          <p>{{ .Summary }}</p>
+          <div class="event-meta"><span>📍 Online</span><span>📅 {{ .Params.event_time }}</span></div>
+        </div>
+        {{ with .Params.registration_url }}<a href="{{ . }}" class="btn btn-outline" style="align-self:center;font-size:.8rem;">RSVP</a>{{ end }}
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+    <div class="grid-3" style="margin-top:2rem;">
+      <div class="card"><div class="card-icon teal">🎙️</div><h3>Invited Speakers</h3><p>Senior researchers and industry practitioners presenting current work and emerging methods.</p></div>
+      <div class="card"><div class="card-icon">💬</div><h3>Q&amp;A Sessions</h3><p>Interactive Q&amp;A with speakers after each presentation. All attendees can submit questions.</p></div>
+      <div class="card"><div class="card-icon sky">📹</div><h3>Recordings Available</h3><p>All seminars are recorded and made available to ABACBS members through the resources library.</p></div>
+    </div>
+  </div>
+</div>
+{{ end }}

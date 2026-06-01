@@ -1,0 +1,40 @@
+baseURL = "https://abacbs.org/"
+languageCode = "en-au"
+title = "ABACBS"
+theme = "abacbs"
+
+[params]
+  description = "The Australian Bioinformatics And Computational Biology Society"
+  email = "committee@abacbs.org"
+  slack = "https://join.slack.com/t/abacbs/shared_invite/zt-3zhdbbaxf-WbYWeVL7CXn02WtEEt4jqQ"
+  linkedin = "https://www.linkedin.com/company/abacbs/?viewAsMember=true"
+  bluesky = "https://bsky.app/profile/abacbs.bsky.social"
+  memberCount = "1,150+"
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Training & Events"
+    url = "/events/"
+    weight = 2
+  [[menu.main]]
+    name = "Conference"
+    url = "/conference/"
+    weight = 3
+  [[menu.main]]
+    name = "News"
+    url = "/news/"
+    weight = 4
+  [[menu.main]]
+    name = "Resources"
+    url = "/resources/"
+    weight = 5
+    [menu.main.params]
+      hasDropdown = true
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 6

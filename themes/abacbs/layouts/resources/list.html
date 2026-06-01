@@ -1,0 +1,99 @@
+{{ define "main" }}
+<div class="sub-hero">
+  <div class="sub-eyebrow">Member Resources</div>
+  <h1>Resources</h1>
+  <p>Workshop materials, seminar recordings, career guides, tools, and the ABACBS jobs board.</p>
+</div>
+
+<!-- JOBS BOARD -->
+<div class="section" id="jobs">
+  <div class="section-label">Jobs Board</div>
+  <h2 class="section-title">Bioinformatics &amp; Computational Biology Positions</h2>
+  <p class="section-lead">Current openings across Australian universities, research institutes, and industry.</p>
+  {{ $jobs := where (where site.RegularPages "Section" "jobs") "Params.draft" "ne" true }}
+  {{ $jobs = $jobs.ByDate.Reverse }}
+  {{ if $jobs }}
+  <div class="jobs-list" style="margin-bottom:1.75rem;">
+    {{ range $jobs }}
+    <div class="job-card">
+      <div>
+        <h4>{{ .Title }}</h4>
+        <div class="job-org">{{ .Params.organisation }} · {{ .Params.location }}</div>
+        <div class="job-meta">
+          <span class="tag tag-teal">{{ .Params.job_type }}</span>
+          <span class="tag tag-sky">{{ .Params.sector }}</span>
+          {{ range .Params.tags }}<span class="tag">{{ . }}</span>{{ end }}
+        </div>
+      </div>
+      {{ with .Params.apply_url }}<a href="{{ . }}" class="btn btn-red" style="font-size:.8rem;align-self:center;">View →</a>{{ end }}
+    </div>
+    {{ end }}
+  </div>
+  {{ else }}
+  <p style="color:var(--muted);margin-bottom:1.75rem;">No current listings. Check back soon.</p>
+  {{ end }}
+  <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
+    <a href="#" class="btn btn-navy">View all positions</a>
+    <a href="#" class="btn btn-outline">Advertise a position</a>
+  </div>
+</div>
+
+<hr class="divider" style="max-width:1100px;margin:0 auto;">
+
+<!-- WORKSHOP RECORDINGS -->
+<div class="section" id="recordings">
+  <div class="section-label">Event Materials</div>
+  <h2 class="section-title">Workshop recordings &amp; slides</h2>
+  <p class="section-lead">Materials from ABACBS workshops, seminars, and conferences. Full recordings available to current members.</p>
+  {{ $recordings := where (where site.RegularPages "Section" "recordings") "Params.draft" "ne" true }}
+  {{ $recordings = $recordings.ByDate.Reverse }}
+  {{ if $recordings }}
+  <div class="resource-grid">
+    {{ range $recordings }}
+    <div class="resource-card">
+      <div class="rc-icon">📹</div>
+      <h4>{{ .Title }}</h4>
+      <p>{{ .Params.description }}</p>
+      {{ with .Params.materials_url }}<a href="{{ . }}" class="card-link">Access materials →</a>{{ end }}
+    </div>
+    {{ end }}
+  </div>
+  {{ end }}
+</div>
+
+<div class="bg-white-section">
+  <div class="bg-white-inner">
+    <!-- CAREER GUIDES -->
+    <div class="section-label" id="guides">Career Development</div>
+    <h2 class="section-title">Guides &amp; professional resources</h2>
+    {{ $guides := where (where site.RegularPages "Section" "guides") "Params.draft" "ne" true }}
+    {{ if $guides }}
+    <div class="grid-2" style="margin-top:1.5rem;">
+      {{ range $guides }}
+      <div class="card">
+        <div class="card-icon">{{ .Params.icon }}</div>
+        <h3>{{ .Title }}</h3>
+        <p>{{ .Params.description }}</p>
+        {{ with .Params.resource_url }}<a class="card-link" href="{{ . }}">Access →</a>{{ end }}
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="section" id="tools">
+  <div class="section-label">External Tools &amp; Databases</div>
+  <h2 class="section-title">Useful resources for practitioners</h2>
+  <div class="grid-3">
+    <div class="card"><div class="card-icon">🧪</div><h3>Bioconductor</h3><p>Open-source software for bioinformatics in R, with thousands of packages for omics analysis.</p><a class="card-link" href="https://www.bioconductor.org" target="_blank">Visit →</a></div>
+    <div class="card"><div class="card-icon teal">🔬</div><h3>Galaxy Australia</h3><p>The Australian node of the Galaxy platform for accessible, reproducible bioinformatics.</p><a class="card-link" href="https://usegalaxy.org.au" target="_blank">Visit →</a></div>
+    <div class="card"><div class="card-icon sky">⚙️</div><h3>NCI Gadi</h3><p>Australia's peak HPC system for large-scale genomics and computational biology research.</p><a class="card-link" href="https://nci.org.au" target="_blank">Visit →</a></div>
+  </div>
+  <div class="info-banner" style="margin-top:2rem;">
+    <p>📬 Want to contribute a resource, suggest a tool, or submit a job listing?</p>
+    <a href="mailto:{{ site.Params.email }}" class="btn btn-red">Contact the Committee</a>
+  </div>
+</div>
+{{ end }}

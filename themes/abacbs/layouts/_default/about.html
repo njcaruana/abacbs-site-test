@@ -1,0 +1,87 @@
+{{ define "main" }}
+<div class="sub-hero">
+  <div class="sub-eyebrow">Who We Are</div>
+  <h1>Executive Committee</h1>
+  <p>ABACBS is governed by a volunteer executive committee of researchers and practitioners from across Australia.</p>
+</div>
+
+<div class="section">
+  <div class="section-label">Leadership</div>
+  <h2 class="section-title">Current executive committee</h2>
+  <p class="section-lead">Committee members serve two-year terms and are elected by the ABACBS membership at the Annual General Meeting.</p>
+
+  {{ $committee := where (where site.RegularPages "Section" "committee") "Params.draft" "ne" true }}
+  {{ $committee = $committee.ByParam "weight" }}
+
+  {{ $officeBearerRoles := slice "President" "Vice President" "Secretary" "Treasurer" "Conference Chair" "Training and Events Chair" }}
+  {{ $officeBearers := slice }}
+  {{ $generalMembers := slice }}
+  {{ range $committee }}
+    {{ if in $officeBearerRoles .Params.role }}
+      {{ $officeBearers = $officeBearers | append . }}
+    {{ else }}
+      {{ $generalMembers = $generalMembers | append . }}
+    {{ end }}
+  {{ end }}
+
+  {{ if $officeBearers }}
+  <div class="section-label" style="margin-bottom:1rem;">Office Bearers</div>
+  <div class="grid-3" style="margin-bottom:2.5rem;">
+    {{ range $officeBearers }}
+    <div class="card card-accent">
+      <div style="display:flex;align-items:center;gap:.85rem;margin-bottom:.75rem;">
+        <div class="committee-avatar">👤</div>
+        <div>
+          <div class="committee-name">{{ .Title }}</div>
+          <div class="committee-role">{{ .Params.role }}</div>
+        </div>
+      </div>
+      <p style="font-size:.875rem;color:var(--muted);">{{ .Params.institution }}{{ with .Params.location }} · {{ . }}{{ end }}</p>
+      {{ with .Params.profile_url }}{{ if . }}<a class="card-link" href="{{ . }}">Profile →</a>{{ end }}{{ end }}
+    </div>
+    {{ end }}
+  </div>
+  {{ end }}
+
+  {{ if $generalMembers }}
+  <div class="section-label" style="margin-bottom:1rem;">General Committee Members</div>
+  <div class="grid-3">
+    {{ range $generalMembers }}
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:.85rem;margin-bottom:.75rem;">
+        <div class="committee-avatar teal">👤</div>
+        <div>
+          <div class="committee-name">{{ .Title }}</div>
+          <div class="committee-role" style="color:var(--teal);">{{ .Params.role }}</div>
+        </div>
+      </div>
+      <p style="font-size:.875rem;color:var(--muted);">{{ .Params.institution }}{{ with .Params.location }} · {{ . }}{{ end }}</p>
+      {{ with .Params.profile_url }}{{ if . }}<a class="card-link" href="{{ . }}">Profile →</a>{{ end }}{{ end }}
+    </div>
+    {{ end }}
+  </div>
+  {{ end }}
+</div>
+
+<div class="bg-white-section">
+  <div class="bg-white-inner">
+    <div class="section-label">Governance</div>
+    <h2 class="section-title">How ABACBS is run</h2>
+    <div class="grid-3">
+      <div class="card"><div class="card-icon">🗳️</div><h3>Elections</h3><p>Committee members are elected by financial members at the Annual General Meeting held each year alongside the national conference.</p></div>
+      <div class="card"><div class="card-icon teal">📄</div><h3>Society Documents</h3><p>The ABACBS constitution, by-laws, and annual reports are publicly available for members and the broader community.</p><a class="card-link" href="#">View documents →</a></div>
+      <div class="card"><div class="card-icon sky">✉️</div><h3>Contact the Committee</h3><p>Questions, feedback, or proposals for the executive committee can be sent to the committee email address.</p><a class="card-link" href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="section-sm">
+  <div class="highlight-box">
+    <div>
+      <h3>Interested in joining the committee?</h3>
+      <p>ABACBS committee positions are open to all financial members. Nominations open prior to each AGM. Get in touch to find out more.</p>
+    </div>
+    <a href="mailto:{{ site.Params.email }}" class="btn btn-red">Get in Touch</a>
+  </div>
+</div>
+{{ end }}

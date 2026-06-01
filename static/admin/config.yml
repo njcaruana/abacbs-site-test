@@ -1,0 +1,147 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "themes/abacbs/static/img"
+public_folder: "/img"
+
+site_url: https://abacbs.org
+display_url: https://abacbs.org
+
+collections:
+
+  - name: "events"
+    label: "Workshops & Events"
+    label_singular: "Workshop / Event"
+    folder: "content/events"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Event Date", name: "event_date", widget: "string", hint: "e.g. 8 July 2026" }
+      - { label: "Date (for sorting)", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+      - { label: "Time", name: "event_time", widget: "string", hint: "e.g. 9am – 1pm AEST" }
+      - { label: "Location", name: "location", widget: "string", hint: "e.g. Online (Zoom) or The University of Queensland" }
+      - label: "Type"
+        name: "type_tag"
+        widget: "select"
+        options: ["Workshop", "Seminar", "Regional", "Social", "Conference", "Webinar"]
+      - { label: "Cost", name: "cost", widget: "string", hint: "e.g. Free for members" }
+      - { label: "Registration URL", name: "registration_url", widget: "string", required: false }
+      - { label: "Description", name: "body", widget: "markdown" }
+      - { label: "Draft (hide from site)", name: "draft", widget: "boolean", default: false }
+
+  - name: "seminars"
+    label: "Monthly Online Seminars"
+    label_singular: "Seminar"
+    folder: "content/seminars"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Event Date", name: "event_date", widget: "string", hint: "e.g. 31 July 2026" }
+      - { label: "Date (for sorting)", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+      - { label: "Time", name: "event_time", widget: "string", hint: "e.g. 12pm AEST" }
+      - { label: "Speaker Name", name: "speaker", widget: "string", required: false }
+      - { label: "Speaker Institution", name: "speaker_institution", widget: "string", required: false }
+      - { label: "Registration / RSVP URL", name: "registration_url", widget: "string", required: false }
+      - { label: "Description", name: "body", widget: "markdown" }
+      - { label: "Draft (hide from site)", name: "draft", widget: "boolean", default: false }
+
+  - name: "news"
+    label: "News & Announcements"
+    label_singular: "News Post"
+    folder: "content/news"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["Conference", "Community", "Awards", "Opportunities", "Recap", "Announcement"]
+      - { label: "Content", name: "body", widget: "markdown" }
+      - { label: "Draft (hide from site)", name: "draft", widget: "boolean", default: false }
+
+  - name: "committee"
+    label: "Executive Committee"
+    label_singular: "Committee Member"
+    folder: "content/committee"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Full Name", name: "title", widget: "string" }
+      - label: "Role"
+        name: "role"
+        widget: "select"
+        options:
+          - "President"
+          - "Vice President"
+          - "Secretary"
+          - "Treasurer"
+          - "Conference Chair"
+          - "Training and Events Chair"
+          - "General Member"
+      - { label: "Institution", name: "institution", widget: "string" }
+      - { label: "Location (City, State)", name: "location", widget: "string" }
+      - { label: "Profile / Lab URL", name: "profile_url", widget: "string", required: false }
+      - { label: "Display Order", name: "weight", widget: "number", default: 10, hint: "Lower numbers appear first. President = 1, VP = 2, etc." }
+      - { label: "Draft (hide from site)", name: "draft", widget: "boolean", default: false }
+
+  - name: "jobs"
+    label: "Jobs Board"
+    label_singular: "Job Listing"
+    folder: "content/jobs"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Job Title", name: "title", widget: "string" }
+      - { label: "Organisation", name: "organisation", widget: "string" }
+      - { label: "Location", name: "location", widget: "string", hint: "e.g. Melbourne, VIC" }
+      - label: "Job Type"
+        name: "job_type"
+        widget: "select"
+        options: ["Full-time", "Part-time", "Contract", "Casual", "Fellowship", "PhD Scholarship", "Postdoc"]
+      - label: "Sector"
+        name: "sector"
+        widget: "select"
+        options: ["Academia", "Research", "Industry", "Government", "Non-profit"]
+      - { label: "Tags (e.g. Genomics, Single-cell)", name: "tags", widget: "list", required: false }
+      - { label: "Apply / More Info URL", name: "apply_url", widget: "string" }
+      - { label: "Date Posted", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+      - { label: "Description", name: "body", widget: "markdown", required: false }
+      - { label: "Draft (hide from site)", name: "draft", widget: "boolean", default: false }
+
+  - name: "recordings"
+    label: "Workshop Recordings & Slides"
+    label_singular: "Recording / Material"
+    folder: "content/recordings"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+      - { label: "Description", name: "description", widget: "text", hint: "Brief summary shown on the resources page" }
+      - { label: "Link to Materials", name: "materials_url", widget: "string", hint: "URL to Google Drive, Zenodo, GitHub, etc." }
+      - { label: "Draft (hide from site)", name: "draft", widget: "boolean", default: false }
+
+  - name: "guides"
+    label: "Career Guides & Professional Resources"
+    label_singular: "Guide / Resource"
+    folder: "content/guides"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text", hint: "Brief summary shown on the resources page" }
+      - { label: "Link to Resource", name: "resource_url", widget: "string", hint: "URL to PDF, Google Doc, external page, etc." }
+      - { label: "Icon (emoji)", name: "icon", widget: "string", default: "📄", hint: "Single emoji shown on the card, e.g. 📋 🌐 🏛️ ✈️" }
+      - { label: "Draft (hide from site)", name: "draft", widget: "boolean", default: false }

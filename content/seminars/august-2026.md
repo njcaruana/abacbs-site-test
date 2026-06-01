@@ -1,0 +1,12 @@
++++
+title = "ABACBS National Seminar Series – August 2026"
+date = 2026-08-28
+event_date = "28 August 2026"
+event_time = "12pm AEST"
+speaker = "[ Speaker Name ]"
+speaker_institution = "[ Institution ]"
+registration_url = "#"
+draft = false
++++
+
+Monthly online seminar featuring an invited speaker from the Australian bioinformatics community. Open to all — no registration required.
